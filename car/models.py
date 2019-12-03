@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -13,3 +13,13 @@ class Car(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Pengecekan(models.Model):
+    car_id = models.ForeignKey(Car, on_delete=models.CASCADE)
+    admin_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    keterangan = models.TextField()
+    slug = models.SlugField()
+
+    def __str__(self):
+        return self.slug

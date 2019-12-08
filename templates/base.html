@@ -4,7 +4,10 @@
 <html lang="en">
 
 <head>
-    <title>{{title}}</title>
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 

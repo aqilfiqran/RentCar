@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{page}}
+{% endblock title %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="email">Email :</label>
+    <input id="email" type="text" name="email">
+    <label for="password">Password :</label>
+    <input id="password" type="password" name='password'>
+    <button type="submit">Submit</button>
+</form>
+{% endblock content %}

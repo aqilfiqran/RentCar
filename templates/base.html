@@ -12,6 +12,20 @@
 </head>
 
 <body>
+    <nav>
+        <li><a href="{% url 'car:index' %}">home</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'auth:logout' %}">logout</a></li>
+            <li><a href="{% url 'car:create' %}">Create Car</a></li>
+            <li><a href="{% url 'car:list' user.id 1 %}">My List Car</a></li>
+            <li><a href="{% url 'car:sewalist' 1 %}">My Sewa</a></li>
+        {% else %}
+            <li><a href="{% url 'auth:register'%}">Register</a></li>
+            <li><a href="{% url 'auth:login' %}">Login</a></li>
+        {% endif %}
+            <li><a href="{% url 'car:list' 'all' 1 %}">sewa mobil</a></li>
+
+    </nav>
     {% block content %}
     {% endblock content %}
 </body>

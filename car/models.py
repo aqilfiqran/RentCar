@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from core.models import User
 from django.utils.translation import ugettext_lazy as _
@@ -21,7 +22,9 @@ class Car(models.Model):
     gambar = models.ImageField(_('Image'), upload_to='car/')
     deskripsi = models.TextField(_('Description'))
     slug = models.SlugField(editable=False)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    update = models.DateTimeField(auto_now_add=True, editable=False)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE, default=1)
 
     def save(self):
         self.slug = slugify(self.title)
@@ -35,8 +38,9 @@ class Car(models.Model):
 
 
 class Pengecekan(models.Model):
-    car_id = models.ForeignKey(Car, on_delete=models.CASCADE, default=1)
-    admin_id = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    car = models.ForeignKey(Car, on_delete=models.CASCADE, default=1)
+    admin = models.ForeignKey(settings.AUTH_USER_MODEL,
+                              on_delete=models.CASCADE, default=1)
     title = models.CharField(max_length=100)
     keterangan = models.TextField()
 
@@ -45,10 +49,13 @@ class Pengecekan(models.Model):
 
 
 class Penyewaan(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    car_id = models.ForeignKey(Car, on_delete=models.CASCADE, default=1)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    car = models.ForeignKey(Car, on_delete=models.CASCADE, default=1)
     tgl_sewa = models.DateField(verbose_name='Start Date')
     tgl_selesai = models.DateField(verbose_name='Finish Date')
 
+    def get_absolute_url(self):
+        return reverse("car:list", args=['all', 1])
+
     def __str__(self):
-        return '{}. {} - {}'.format(self.id, self.user_id.name, self.car_id.title)
+        return '{}. {} - {}'.format(self.id, self.user.name, self.car.title)

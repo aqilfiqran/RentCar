@@ -1,5 +1,23 @@
-from .models import Car
+from .models import Car, Penyewaan
 from django import forms
+
+
+class PenyewaanForm(forms.ModelForm):
+    class Meta:
+        model = Penyewaan
+        fields = ['tgl_sewa', 'tgl_selesai']
+        widgets = {
+            'tgl_sewa': forms.DateInput(
+                attrs={
+                    'class': 'form-control'
+                }
+            ),
+            'tgl_selesai': forms.DateInput(
+                attrs={
+                    'class': 'form-control'
+                }
+            ),
+        }
 
 
 class CarForm(forms.ModelForm):
@@ -31,7 +49,8 @@ class CarForm(forms.ModelForm):
             ),
             'gambar': forms.FileInput(
                 attrs={
-                    'class': 'form-control'
+                    # 'accept': '.jpg,.png,.jpeg',
+                    'class': 'form-control',
                 }
             ),
             'deskripsi': forms.Textarea(

@@ -1,19 +1,60 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>
-        {% block title %}
-        {% endblock title %}
-    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% include 'snippet/style.html' %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{{title}}</title>
 </head>
 
 <body>
-    {% block content %}
-    {% endblock content %}
+    {% comment %} navbar {% endcomment %}
+    {% include 'snippet/navbar.html' %}
+    {% comment %} end of navbar {% endcomment %}
+
+    {% comment %} content {% endcomment %}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            {% block header %}
+            {% endblock header %}
+        </div>
+    </div>
+    <div id="mybody" class="bg-white text-dark shadow">
+        {% block content-1 %}
+
+        {% endblock content-1 %}
+    </div>
+    {% comment %} end of content {% endcomment %}
+
+    {% comment %} footer {% endcomment %}
+    <footer>
+        <div class="container pt-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>RentCar</h2>
+                </div>
+                <div class="col-md-4">
+                    <ul class="nav">
+                        {% for link, nama in nav %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{link}}">{{nama}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h2>About Us : </h2>
+                </div>
+            </div>
+        </div>
+    </footer>
+    {% comment %} end of footer {% endcomment %}
+
+    {% include 'snippet/script.html' %}
 </body>
 
 </html>

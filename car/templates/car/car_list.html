@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Car | List
+{% endblock title %}
+
+{% block content %}
+    {% for car in object_list %}
+        <h1>{{car.title}}</h1>
+        <h1>{{car.harga_sewa_hari}}</h1>
+        <h1>{{car.lokasi}}</h1>
+        <img src="{{car.gambar.url}}" width='100px' height='100px' alt="">
+        <a href="{% url 'car:detail' car.slug %}">read more</a>
+        <a href="{% url 'car:sewa' car.id %}">sewa  </a>
+        <br>
+        {% if is_paginated %}
+            {% if page_obj.has_previous %}
+                {% if pk %}
+                    <a href="{% url 'car:list' pk page_obj.previous_page_number%}">back</a>
+                {% else %}
+                    <a href="{% url 'car:list' 'all' page_obj.previous_page_number%}">back</a>
+                {% endif %}
+            {% endif %}
+            {% for i in paginator.page_range %}
+                {% if pk %}
+                    <a href="{% url 'car:list' pk i%}">back</a>
+                {% else %}
+                    <a href="{% url 'car:list' 'all' i %}">{{i}}</a>
+                {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+                {% if pk %}
+                    <a href="{% url 'car:list' pk page_obj.next_page_number%}">back</a>
+                {% else %}
+                    <a href="{% url 'car:list' 'all' page_obj.next_page_number%}">next</a>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endblock content %}

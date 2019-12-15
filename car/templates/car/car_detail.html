@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+Car | Detail
+{% endblock title %}
+
+{% block content %}
+    <h1>{{object.title}}</h1>
+    <h1>{{object.harga_sewa_hari}}</h1>
+    <h1>{{object.lokasi}}</h1>
+    <img src="{{object.gambar.url}}" width='100px' height='100px' alt="">
+    <p>{{object.deskripsi}}</p>
+{% endblock content %}

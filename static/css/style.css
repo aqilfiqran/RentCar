@@ -1,16 +1,6 @@
-body {
-    padding: 0;
-    margin: 0;
-}
-
-nav {
-    background-color: blue;
-}
-
-h1 {
-    color: red;
-}
-
-.form-control {
-    color: red;
+.jumbotron {
+    background-image: url("/static/img/mobil.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
 }

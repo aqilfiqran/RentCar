@@ -8,7 +8,15 @@ from django.urls import reverse_lazy
 
 def index(request):
     context = {
-        'page': 'Car | Home'
+        'page': 'Car | Home',
+        'title': 'Home',
+        'nav': [
+            ['/', 'Home'],
+            ['/about', 'About'],
+            ['/login', 'Login'],
+            ['/register', 'Register'],
+        ],
+        'judul': 'RentCar',
     }
     return render(request, 'car/index.html', context)
 

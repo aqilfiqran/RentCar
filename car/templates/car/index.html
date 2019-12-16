@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}
+{{page}}
+{% endblock title %}
+
 {% block header %}
 <div class="container">
     <div class="row">
@@ -13,18 +17,3 @@
     </div>
 </div>
 {% endblock header %}
-
-{% block content-1 %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="section_title text-center">
-                <h3>List Car</h3>
-            </div>
-        </div>
-    </div>
-    <div class="row pt-4 pb-4">
-
-    </div>
-</div>
-{% endblock content-1 %}

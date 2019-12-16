@@ -35,7 +35,7 @@ class UserForm(forms.ModelForm):
             ),
             'stnk': forms.FileInput(
                 attrs={
-                    'class': 'form-control'
+                    'class': 'form-control-file'
                 }
             ),
         }

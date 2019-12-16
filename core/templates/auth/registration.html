@@ -6,12 +6,20 @@
 {% endblock title %}
 
 {% block content %}
-<form method="POST" action="">
-    {% csrf_token %}
-    {% for forms in form %}
-    {{forms.label}}
-    {{forms}}
-    {% endfor %}
-    <button type="submit">Submit</button>
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-lg">
+            <form method="POST" action="">
+                {% csrf_token %}
+                {% for forms in form %}
+                <div class="form-group">
+                    {{forms.label}}
+                    {{forms}}
+                </div>
+                {% endfor %}
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}

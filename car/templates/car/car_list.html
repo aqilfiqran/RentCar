@@ -2,40 +2,70 @@
 {% load static %}
 
 {% block title %}
-    Car | List
+Car | List
 {% endblock title %}
 
 {% block content %}
-    {% for car in object_list %}
-        <h1>{{car.title}}</h1>
-        <h1>{{car.harga_sewa_hari}}</h1>
-        <h1>{{car.lokasi}}</h1>
-        <img src="{{car.gambar.url}}" width='100px' height='100px' alt="">
-        <a href="{% url 'car:detail' car.slug %}">read more</a>
-        <a href="{% url 'car:sewa' car.id %}">sewa  </a>
-        <br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="section_title text-center">
+                <h3>List Car</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-4 pb-4">
+        {% for car in object_list %}
+        <div class="col-lg-4 col-md pb-3">
+            <div class="card" style="width: 18rem;">
+                <img src="{{car.gambar.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{car.title}}</h5>
+                    <li class="card-text" style="list-style:none;">
+                        Lokasi : {{car.lokasi}}
+                    </li>
+                    <li class="card-text pb-3" style="list-style:none;">
+                        Harga Sewa : {{car.harga_sewa_hari}}
+                    </li>
+                    <a href=" {% url 'car:detail' car.slug %}" class="btn btn-warning">Read More</a>
+                    <a href="{% url 'car:sewa' car.id %}" class="btn btn-warning">sewa </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center pb-3">
         {% if is_paginated %}
-            {% if page_obj.has_previous %}
-                {% if pk %}
-                    <a href="{% url 'car:list' pk page_obj.previous_page_number%}">back</a>
-                {% else %}
-                    <a href="{% url 'car:list' 'all' page_obj.previous_page_number%}">back</a>
-                {% endif %}
-            {% endif %}
-            {% for i in paginator.page_range %}
-                {% if pk %}
-                    <a href="{% url 'car:list' pk i%}">back</a>
-                {% else %}
-                    <a href="{% url 'car:list' 'all' i %}">{{i}}</a>
-                {% endif %}
-            {% endfor %}
-            {% if page_obj.has_next %}
-                {% if pk %}
-                    <a href="{% url 'car:list' pk page_obj.next_page_number%}">back</a>
-                {% else %}
-                    <a href="{% url 'car:list' 'all' page_obj.next_page_number%}">next</a>
-                {% endif %}
-            {% endif %}
+        {% if page_obj.has_previous %}
+        {% if pk %}
+        <li style="list-style:none;" class="page-item"><a class="page-link"
+                href="{% url 'car:list' pk page_obj.previous_page_number%}">back</a>
+        </li>
+        {% else %}
+        <li style="list-style:none;" class="page-item"><a class="page-link"
+                href="{% url 'car:list' 'all' page_obj.previous_page_number%}">back</a></li>
         {% endif %}
-    {% endfor %}
+        {% endif %}
+        {% for i in paginator.page_range %}
+        {% if pk %}
+        <li style="list-style:none;" class="page-item"><a class="page-link" href="{% url 'car:list' pk i%}">back</a>
+        </li>
+        {% else %}
+        <li style="list-style:none;" class="page-item"><a class="page-link"
+                href="{% url 'car:list' 'all' i %}">{{i}}</a>
+        </li>
+        {% endif %}
+        {% endfor %} {% if page_obj.has_next %} {% if pk %}
+        <li style="list-style:none;" class="page-item"><a class="page-link"
+                href="{% url 'car:list' pk page_obj.next_page_number%}">back</a></li>
+        {% else %}
+        <li style="list-style:none;" class="page-item"><a class="page-link"
+                href="{% url 'car:list' 'all' page_obj.next_page_number%}">next</a>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endif %}
+    </div>
+
+</div>
 {% endblock content %}

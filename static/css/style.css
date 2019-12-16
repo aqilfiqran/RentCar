@@ -4,3 +4,8 @@
     background-size: cover;
     height: 100vh;
 }
+
+.no-border {
+    background: transparent;
+    border-bottom: 2px solid orange;
+}

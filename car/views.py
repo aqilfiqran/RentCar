@@ -9,13 +9,6 @@ from django.urls import reverse_lazy
 def index(request):
     context = {
         'page': 'Car | Home',
-        'title': 'Home',
-        'nav': [
-            ['/', 'Home'],
-            ['/about', 'About'],
-            ['/login', 'Login'],
-            ['/register', 'Register'],
-        ],
         'judul': 'RentCar',
     }
     return render(request, 'car/index.html', context)
@@ -41,7 +34,7 @@ class SewaCreateView(LoginRequiredMixin, CreateView):
 
 class CarListView(ListView):
     model = Car
-    paginate_by = 20
+    paginate_by = 2
     ordering = ['update']
 
     def get_queryset(self):

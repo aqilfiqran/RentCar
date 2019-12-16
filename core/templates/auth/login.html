@@ -16,7 +16,6 @@
                         <h4 class="card-title">Login</h4>
                     </div>
                     <p class="description text-center pt-4">MyAccount</p>
-                    {% comment %} <?= $this->session->flashdata('pesan'); ?> {% endcomment %}
                     <div class="card-body pt-2">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -37,7 +36,7 @@
                         </div>
                     </div>
                     <div class="footer text-center pt-3">
-                        <button type="submit" name="login" class="btn btn-dark btn-link btn-wd btn-lg">Login</button>
+                        <button type="submit" name="login" class="btn btn-warning">Login</button>
                     </div>
                     <div class="create-ac text-center">
                         <p>Didn't have any account? <a href="{% url 'auth:register' %}">Click Here</a></p>

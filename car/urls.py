@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import SewaListView, SewaCreateView, CarDeleteView, CarCreateView, CarDetailView, CarListView, index, CarUpdateView
+from .views import About, SewaListView, SewaCreateView, CarDeleteView, CarCreateView, CarDetailView, CarListView, index, CarUpdateView
 
 app_name = 'car'
 urlpatterns = [
@@ -12,5 +12,6 @@ urlpatterns = [
          SewaListView.as_view(), name='sewalist'),
     path('update/<int:pk>', CarUpdateView.as_view(), name='update'),
     path('delete/<int:pk>', CarDeleteView.as_view(), name='delete'),
-    path('detail/<slug:slug>/', CarDetailView.as_view(), name='detail')
+    path('detail/<slug:slug>/', CarDetailView.as_view(), name='detail'),
+    path('about/', About.as_view(), name="about")
 ]

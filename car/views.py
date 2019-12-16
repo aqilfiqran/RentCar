@@ -1,9 +1,20 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import DeleteView, DetailView, ListView, CreateView, UpdateView
+from django.views.generic import TemplateView, DeleteView, DetailView, ListView, CreateView, UpdateView
 from .forms import CarForm, PenyewaanForm
 from .models import Car, Penyewaan
 from django.urls import reverse_lazy
+
+
+class About(TemplateView):
+    template_name = 'car/about.html'
+    extra_context = {
+        'page': 'Rentcar | About'
+    }
+
+    def get_context_data(self, **kwargs):
+        kwargs.update(self.extra_context)
+        return super().get_context_data(**kwargs)
 
 
 def index(request):

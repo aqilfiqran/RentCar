@@ -3,7 +3,7 @@ from django import forms
 
 
 class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+    # password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
         model = User
@@ -15,7 +15,7 @@ class UserForm(forms.ModelForm):
                     'placeholder': 'Your Email',
                 }
             ),
-            'password': forms.TextInput(
+            'password': forms.PasswordInput(
                 attrs={
                     'class': 'form-control',
                     'placeholder': 'Your Password'
@@ -35,7 +35,7 @@ class UserForm(forms.ModelForm):
             ),
             'stnk': forms.FileInput(
                 attrs={
-                    'class': 'form-control-file'
+                    'class': 'inputFileHidden',
                 }
             ),
         }

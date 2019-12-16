@@ -35,8 +35,17 @@ class SewaCreateView(LoginRequiredMixin, CreateView):
 
 class CarListView(ListView):
     model = Car
-    paginate_by = 2
+    paginate_by = 9
     ordering = ['update']
+    extra_context = {
+        'page': 'Car | Update',
+        'judul': 'RentCar',
+        'penjelasan': 'penjelasan sewa mobil'
+    }
+
+    def get_context_data(self, **kwargs):
+        kwargs.update(self.extra_context)
+        return super().get_context_data(**kwargs)
 
     def get_queryset(self):
         if self.kwargs['pk'] != 'all':

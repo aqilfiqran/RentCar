@@ -10,7 +10,7 @@ from .managers import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(_('email address'), unique=True)
+    email = models.EmailField(_('Email address'), unique=True)
     name = models.CharField(_('Name'), max_length=100, blank=True)
     no_hp = models.CharField(_('No HP'), max_length=20, blank=True)
     stnk = models.ImageField(upload_to='stnk/', null=True, blank=True)

@@ -1,16 +1,43 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from .forms import UserForm
+from .models import User
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login, authenticate, logout
+from django.views.generic import DeleteView, UpdateView
+
+
+class EditProfil(LoginRequiredMixin, UpdateView):
+    form_class = UserForm
+    model = User
+    template_name = 'car/create.html'
+    extra_context = {
+        'page': 'User | Update'
+    }
+
+    def get_context_data(self, **kwargs):
+        kwargs.update(self.extra_context)
+        return super().get_context_data(**kwargs)
 
 
 class UserFormView(View):
     form_class = UserForm
     template_name = 'auth/registration.html'
+    context = {
+        'page': 'register',
+        'icon': {
+            '<label for="id_email">Email address:</label>': 'far fa-envelope',
+            '<label for="id_name">Name:</label>': 'far fa-envelope',
+            '<label for="id_no_hp">No HP:</label>': 'far fa-envelope',
+            '<label for="id_password">Password:</label>': 'far fa-envelope',
+            '<label for="id_stnk">Stnk:</label>': 'far fa-envelope',
+        }
+    }
 
     def get(self, request):
         form = self.form_class(None)
-        return render(request, self.template_name, {'page': 'register', 'form': form})
+        self.context['form'] = form
+        return render(request, self.template_name, self.context)
 
     def post(self, request):
         form = self.form_class(request.POST)

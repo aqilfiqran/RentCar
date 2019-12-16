@@ -12,7 +12,7 @@ class UserForm(forms.ModelForm):
             'email': forms.TextInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Your Email'
+                    'placeholder': 'Your Email',
                 }
             ),
             'password': forms.TextInput(
@@ -35,7 +35,7 @@ class UserForm(forms.ModelForm):
             ),
             'stnk': forms.FileInput(
                 attrs={
-                    'class': 'form-control'
+                    'class': 'form-control-file'
                 }
             ),
         }

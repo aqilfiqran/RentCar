@@ -4,9 +4,24 @@ Car | Detail
 {% endblock title %}
 
 {% block content %}
-    <h1>{{object.title}}</h1>
-    <h1>{{object.harga_sewa_hari}}</h1>
-    <h1>{{object.lokasi}}</h1>
-    <img src="{{object.gambar.url}}" width='100px' height='100px' alt="">
-    <p>{{object.deskripsi}}</p>
+<div class="row">
+    <div class="col-lg-4 col-md" style="background:url('{{object.gambar.url}}');background-size:cover;">
+    </div>
+    <div class="col-lg-8 col-md">
+        <div class="container">
+            <div class="row">
+                <h1>{{object.title}}</h1>
+            </div>
+            <div class="row">
+                <h1>{{object.harga_sewa_hari}}</h1>
+            </div>
+            <div class="row">
+                <h1>{{object.lokasi}}</h1>
+            </div>
+            <div class="row">
+                <p>{{object.deskripsi}}</p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

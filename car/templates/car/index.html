@@ -2,49 +2,29 @@
 {% load static %}
 
 {% block header %}
-<h1 class="display-4 text-center text-white">{{judul}}</h1>
-<p class="lead text-center text-white">Ini adalah penjelasan deskripsi rentcar</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+            <div class="brand text-center">
+                <h1>{{judul}}</h1>
+                <h3 class="title text-center">{{penjelasan}}</h3>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock header %}
 
 {% block content-1 %}
 <div class="container">
-    <div class="row justify-content-center pt-4">
-        <h2>Daftar Mobil</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="section_title text-center">
+                <h3>List Car</h3>
+            </div>
+        </div>
     </div>
     <div class="row pt-4 pb-4">
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-                <img src="{% static 'img/mobil.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-                <img src="{% static 'img/mobil.jpg' %}" class="card-img-top" alt="">
-                <div class=" card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-                <img src="{% static 'img/mobil.jpg' %}" class="card-img-top" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>
 {% endblock content-1 %}

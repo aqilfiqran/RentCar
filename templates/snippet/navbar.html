@@ -1,22 +1,67 @@
 {% load static %}
-<nav id="mynav" class="navbar navbar-expand-md navbar-dark fixed-top">
-    <a class="navbar-brand" href="/">RentCar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<nav class="navbar navbar-transparent bg-dark navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="550">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand" href="{% url 'car:index' %}">RentCar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            {% for link, nama in nav %}
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{link}}">{{nama}} <span class="sr-only">(current)</span></a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="{% url 'car:index'%}" class="nav-link">Home</a>
                 </li>
-            {% endfor %}
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-        </form>
+                <li class="nav-item">
+                    <a href="{% url 'car:list' 'all' 1%}" class="nav-link">Sewa</a>
+                </li>
+            </ul>
+            <form class="form-inline ml-auto nav-item navbar-nav" action="" method="post">
+                <div class="form-group no-border pr-4">
+                    <input type="text" class="form-control place" name="keyword" placeholder="Cari"
+                        style="color: grey;">
+                </div>
+            </form>
+            <div class="btn-group nav-item navbar-nav">
+                {% if user.is_authenticated %}
+                {% if user.avatar %}
+                <img src="{{user.avatar.url}}" class="btn bg-transparent btn-just-icon rounded-circle"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {% else%}
+                <img src="{% static 'img/default.jpg' %}" class="btn bg-transparent btn-just-icon rounded-circle"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {% endif %}
+                <div class="dropdown-menu">
+                    <label class="dropdown-item">{{user.name}}</label>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'auth:profiledit' user.id%}">
+                        <i class="fas fa-user-edit fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Edit Profil
+                    </a>
+                    <a class="dropdown-item" href="{% url 'car:list' user.id 1 %}">
+                        <i class="fas fa-car fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Mycar
+                    </a>
+                    <a class="dropdown-item" href="{% url 'car:create' %}">
+                        <i class="fas fa-truck-loading fa-sm fa-fw mr-2 text-gray-400"></i>
+                        CreateSewa
+                    </a>
+                    <a class="dropdown-item" href="{% url 'auth:logout' %}">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Logout
+                    </a>
+                </div>
+                {% else %}
+                <a href="{% url 'auth:login' %}">
+                    <button class="btn bg-transparent btn-round" style="border:thick; color: grey;">Login</button>
+                </a>
+                {% endif %}
+            </div>
+        </div>
     </div>
 </nav>

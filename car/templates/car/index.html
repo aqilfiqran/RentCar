@@ -2,8 +2,16 @@
 {% load static %}
 
 {% block header %}
-<h1 class="display-4 text-center text-white">{{judul}}</h1>
-<p class="lead text-center text-white">Ini adalah penjelasan deskripsi rentcar</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+            <div class="brand text-center">
+                <h1>{{judul}}</h1>
+                <h3 class="title text-center">{{penjelasan}}</h3>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock header %}
 
 {% block content-1 %}

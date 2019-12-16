@@ -5,8 +5,50 @@
 {{page}}
 {% endblock title %}
 
-{% block content %}
+{% block header %}
 <div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 ml-auto mr-auto mt-5 pt-5">
+            <div class="card card-login">
+                <form class="form" method="POST" action="">
+                    {% csrf_token %}
+                    <div class="card-header card-header-warning text-center">
+                        <h4 class="card-title">Login</h4>
+                    </div>
+                    <p class="description text-center pt-4">MyAccount</p>
+                    {% comment %} <?= $this->session->flashdata('pesan'); ?> {% endcomment %}
+                    <div class="card-body pt-2">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-user-circle"></i>
+                                </span>
+                            </div>
+                            <input name="email" id="email" type="text" class="form-control" placeholder="Email Address">
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-key"></i>
+                                </span>
+                            </div>
+                            <input name="password" type="password" id="password" class="form-control"
+                                placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="footer text-center pt-3">
+                        <button type="submit" name="login" class="btn btn-dark btn-link btn-wd btn-lg">Login</button>
+                    </div>
+                    <div class="create-ac text-center">
+                        <p>Didn't have any account? <a href="{% url 'auth:register' %}">Click Here</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% comment %} <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg">
             <form action="" method="post">
@@ -29,5 +71,5 @@
             </form>
         </div>
     </div>
-</div>
-{% endblock content %}
+</div> {% endcomment %}
+{% endblock header %}

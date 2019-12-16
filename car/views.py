@@ -10,6 +10,7 @@ def index(request):
     context = {
         'page': 'Car | Home',
         'judul': 'RentCar',
+        'penjelasan': 'ini penjelasan'
     }
     return render(request, 'car/index.html', context)
 

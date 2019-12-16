@@ -14,43 +14,57 @@
 <body>
     {% comment %} navbar {% endcomment %}
     {% include 'snippet/navbar.html' %}
-    {% comment %} end of navbar {% endcomment %}
 
-    {% comment %} content {% endcomment %}
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            {% block header %}
-            {% endblock header %}
-        </div>
+    <!-- textarea -->
+    <div class="page-header header-filter" data-parallax="false"
+        style="background-image: url('{% static 'img/mobil.jpg' %}')">
+        {% block header %}
+        {% endblock header %}
     </div>
+    <!-- end of textarea -->
+
     <div id="mybody" class="bg-white text-dark">
         {% block content %}
-
         {% endblock content %}
     </div>
-    {% comment %} end of content {% endcomment %}
 
     {% comment %} footer {% endcomment %}
-    <footer style="background-color: black;
-        box-shadow: 0px 0px 5px rgb(34, 31, 31),
-        0px 0px 10px rgb(34, 31, 31),
-        0px 0px 15px rgb(34, 31, 31) inset;">
-        <div class="container pt-3">
+    <footer class="footer">
+        <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h2>RentCar</h2>
+                    <h1 class="title">RentCar</h1>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 pt-5 pl-5">
                     <ul class="nav">
-                        {% for link, nama in nav %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{link}}">{{nama}}</a>
+                        <li class="nav-item ">
+                            <a href="" class="nav-link">
+                                Kontak Kami
+                            </a>
                         </li>
-                        {% endfor %}
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                Tentang Kami
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h2>About Us : </h2>
+                    <h3 class="title">Follow Us:</h3>
+                    <div class="btn-wrapper profile">
+                        <a target="_blank" href="" class="btn btn-icon btn-neutral btn-round btn-simple"
+                            data-toggle="tooltip" data-original-title="Follow us">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a target="_blank" href="" class="btn btn-icon btn-neutral btn-round btn-simple"
+                            data-toggle="tooltip" data-original-title="Like us">
+                            <i class="fab fa-facebook-square"></i>
+                        </a>
+                        <a target="_blank" href="" class="btn btn-icon btn-neutral  btn-round btn-simple"
+                            data-toggle="tooltip" data-original-title="Follow us">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

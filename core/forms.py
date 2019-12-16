@@ -12,7 +12,7 @@ class UserForm(forms.ModelForm):
             'email': forms.TextInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Your Email'
+                    'placeholder': 'Your Email',
                 }
             ),
             'password': forms.TextInput(

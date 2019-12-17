@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Sewa | List
+{% endblock title %}
+
+{% block content %}
+{% for sewa in object_list %}
+    <h1>{{sewa.car.title}}</h1>
+    <img src="{{sewa.car.gambar.url}}" width='100px' height='100px' alt="">
+    <h1>{{sewa.tgl_sewa}}</h1>
+    <h1>{{sewa.tgl_selesai}}</h1>
+    <br>
+    {% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a href="{% url 'car:sewalist' page_obj.previous_page_number%}">back</a>
+        {% endif %}
+        {% for i in paginator.page_range %}
+            <a href="{% url 'car:sewalist' i%}">{{i}}</a>
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <a href="{% url 'car:sewalist' page_obj.next_page_number%}">next</a>
+        {% endif %}
+    {% endif %}
+{% endfor %}
+{% endblock content %}

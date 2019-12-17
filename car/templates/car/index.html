@@ -1,5 +1,19 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block content %}
-<h1>ini adalah halaman utama</h1>
-{% endblock content %}
+{% block title %}
+{{page}}
+{% endblock title %}
+
+{% block header %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+            <div class="brand text-center">
+                <h1>{{judul}}</h1>
+                <h3 class="title text-center">{{penjelasan}}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock header %}

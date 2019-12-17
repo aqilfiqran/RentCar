@@ -1,8 +1,179 @@
-body {
-    padding: 0;
-    margin: 0;
+.bg-darks {
+    background-color: rgb(17, 15, 15) !important;
+    box-shadow: 0px 0px 10px black,
+        0px 0px 15px black,
+        0px 0px 20px black inset;
 }
 
-h1 {
-    color: pink;
+nav .btn {
+    color: #555;
+    box-shadow: none;
+    transition: .7s;
+    font-size: 16px;
+}
+
+nav .btn:hover {
+    color: white;
+    box-shadow: 0 2px 2px 0 rgba(36, 34, 34, 0.3),
+        0 3px 1px -2px rgba(36, 34, 34, 0.5),
+        0 1px 5px 0 rgba(36, 34, 34, 0.7) inset;
+}
+
+.form-control,
+.is-focused .form-control {
+    background-image: linear-gradient(to top, rgb(66, 63, 63) 2px, rgba(156, 39, 176, 0) 2px),
+        linear-gradient(to top, rgb(17, 15, 15) 1px, rgba(210, 210, 210, 0) 1px);
+}
+
+.nav-link:hover,
+.navbar-brand:hover {
+    color: white !important;
+}
+
+.nav-link,
+.navbar-brand {
+    transition: .7s;
+}
+
+.navbar.navbar-transparent {
+    color: #555;
+}
+
+.dropdown-menu {
+    background-color: rgb(17, 16, 16);
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus,
+.dropdown-menu a:hover,
+.dropdown-menu a:focus,
+.dropdown-menu a:active {
+    background-color: rgb(61, 55, 55);
+    box-shadow: none;
+}
+
+.dropdown-menu .dropdown-item,
+.dropdown-menu li>a {
+    transition: .5s;
+    color: white;
+}
+
+.dropdown-divider {
+    height: 0;
+    margin: 0.5rem 0;
+    overflow: hidden;
+    border-top: 1px solid #e9ecef;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #555;
+}
+
+.card {
+    background: #D3CCE3;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #E9E4F0, #D3CCE3);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.card .card-header-warning,
+.card.bg-warning,
+.card.card-rotate.bg-warning .front,
+.card.card-rotate.bg-warning .back {
+    background: rgb(102, 86, 88);
+    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2),
+        0 13px 24px -11px rgba(0, 0, 0, 0.6);
+}
+
+.btn.btn-warning {
+    border: none;
+    color: rgb(104, 102, 102);
+    background-color: rgb(17, 15, 15) !important;
+    transition: .7s;
+}
+
+.btn.btn-warning:focus,
+.btn.btn-warning.focus,
+.btn.btn-warning:hover {
+    color: rgb(17, 15, 15);
+    background-color: rgb(104, 102, 102);
+}
+
+.btn-warning:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    z-index: -1;
+    background: rgb(104, 102, 102);
+    transform: scaleX(0);
+    transition: .5s;
+    transform-origin: left;
+    border-radius: 3px 0px 0px 3px;
+}
+
+.btn-warning:hover:before {
+    transform: scaleX(1);
+    transform-origin: right;
+}
+
+.btn-warning:after {
+    content: '';
+    border-radius: 0px 3px 3px 0px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    z-index: -1;
+    background: rgb(104, 102, 102);
+    transform: scaleX(0);
+    transition: .5s;
+    transform-origin: right;
+}
+
+.btn-warning:hover:after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+a {
+    color: rgb(199, 199, 199);
+}
+
+a:hover {
+    color: rgb(98, 98, 98);
+}
+
+.page-link {
+    background-color: rgb(17, 15, 15);
+    transition: .5s;
+    color: rgb(98, 98, 98);
+}
+
+.page-link:hover {
+    background-color: rgb(98, 98, 98);
+    color: rgb(17, 15, 15);
+}
+
+.header-filter {
+    background-size: cover;
+}
+
+#mybody {
+    position: relative;
+}
+
+footer {
+    box-sizing: border-box;
+    position: relative;
+    background-color: rgb(17, 15, 15) !important;
+    box-shadow: 0px 0px 10px black,
+        0px 0px 15px black,
+        0px 0px 20px black inset;
 }

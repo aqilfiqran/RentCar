@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Car | List
+{% endblock title %}
+
+{% block header %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+            <div class="brand text-center">
+                <h1>{{judul}}</h1>
+                <h3 class="title text-center">{{penjelasan}}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="section_title text-center">
+                <h3>List Car</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-4 pb-4">
+        {% for car in object_list %}
+        <div class="col-lg-4 col-md pb-3">
+            <div class="card" style="width: 18rem;">
+                <img src="{{car.gambar.url }}" height="288px" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{car.title}}</h5>
+                    <li class="card-text" style="list-style:none;">
+                        Lokasi : {{car.lokasi}}
+                    </li>
+                    <li class="card-text pb-3" style="list-style:none;">
+                        Harga Sewa : {{car.harga_sewa_hari}}
+                    </li>
+                    <a href=" {% url 'car:detail' car.slug %}" class="btn btn-warning">Read More</a>
+                    <a href="{% url 'car:sewa' car.id %}" class="btn btn-warning">sewa </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center pb-3">
+        {% if is_paginated %}
+        {% if page_obj.has_previous %}
+        {% if pk %}
+        <li style="list-style:none;" class="page-item"><a class="page-link"
+                href="{% url 'car:list' pk page_obj.previous_page_number%}">Previous</a>
+        </li>
+        {% else %}
+        <li style="list-style:none;" class="page-item"><a class="page-link"
+                href="{% url 'car:list' 'all' page_obj.previous_page_number%}">Previous</a></li>
+        {% endif %}
+        {% endif %}
+        {% for i in paginator.page_range %}
+        {% if pk %}
+        <li style="list-style:none;" class="page-item"><a class="page-link" href="{% url 'car:list' pk i%}">{{i}}</a>
+        </li>
+        {% else %}
+        <li style="list-style:none;" class="page-item"><a class="page-link"
+                href="{% url 'car:list' 'all' i %}">{{i}}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        {% if pk  %}
+        <li style="list-style:none;" class="page-item"><a class="page-link"
+                href="{% url 'car:list' pk page_obj.next_page_number%}">Next</a></li>
+        {% else %}
+        <li style="list-style:none;" class="page-item"><a class="page-link"
+                href="{% url 'car:list' 'all' page_obj.next_page_number%}">Next</a>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endif %}
+    </div>
+
+</div>
+{% endblock content %}

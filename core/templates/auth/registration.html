@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{page}}
+{% endblock title %}
+
+{% block header %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 ml-auto mr-auto mt-5 pt-5">
+            <div class="card card-login">
+                <form class="form" method="POST" enctype="multipart/form-data" action="">
+                    {% csrf_token %}
+                    <div class="card-header card-header-warning text-center">
+                        <h4 class="card-title">Register</h4>
+                    </div>
+                    <!-- tampilan untuk membuat akun -->
+                    <p class="description text-center pt-2">Create Account</p>
+                    <div class="card-body">
+                        {% for icon,forms  in form %}
+                        {% if forloop.counter is 4 %}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="{{icon}}"></i>
+                                </span>
+                            </div>
+                            <div class="form-group form-file-upload form-file-simple">
+                                <input type="text" class="form-control inputFileVisible"
+                                    placeholder="Simple chooser...">
+                                {{forms}}
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="{{icon}}"></i>
+                                </span>
+                            </div>
+                            {{forms}}
+                        </div>
+                        {% endif %}
+
+                        {% endfor %}
+                    </div>
+                    <div class="footer text-center">
+                        <button type="submit" name="register" class="btn btn-warning">Register</button>
+                    </div>
+                    <!-- menghubungkan ke halaman login -->
+                    <div class="create-ac text-center pb-2">
+                        <p>Already have account ? <a href="{% url 'auth:login' %}">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock header %}

@@ -44,9 +44,18 @@ Car | Detail
             </div>
             {% if sewa %}
             {% for sewas in sewa %}
-            {{sewas.user.name}}
-            {{sewas.user.no_hp}}
-            <a href="{% url 'car:submit' sewas.id %}">konfirmasi</a>
+            <div class="row">
+                <div class="col-lg-3 col-md">
+                    <div class="card">
+                        <div style="font-family: montserrat;" class="card-body text-center">
+                            <h4>Nama Penyewa</h4>
+                            <p style="font-weight: 800; text-transform: uppercase;">{{sewas.user.name}}</p>
+                            <p>No hp : {{sewas.user.no_hp}}</p>
+                            <a class="btn btn-warning" href="{% url 'car:submit' sewas.id %}">konfirmasi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
             {% endif %}
         </div>

@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="navbar navbar-transparent bg-dark navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="550">
+<nav class="navbar navbar-transparent bg-darks navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="550">
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand" href="{% url 'car:index' %}">RentCar</a>
@@ -21,10 +21,10 @@
                     <a href="{% url 'car:list' 'all' 1%}" class="nav-link">Sewa</a>
                 </li>
             </ul>
-            <form class="form-inline ml-auto nav-item navbar-nav" action="" method="post">
+            <form class="form-inline ml-auto nav-item navbar-nav" action="{% url 'car:index' %}" method="post">
+                {% csrf_token %}
                 <div class="form-group no-border pr-4">
-                    <input type="text" class="form-control place" name="keyword" placeholder="Cari"
-                        style="color: grey;">
+                    <input type="text" class="form-control place" name="keyword" placeholder="Search">
                 </div>
             </form>
             <div class="btn-group nav-item navbar-nav">
@@ -38,6 +38,12 @@
                 {% endif %}
                 <div class="dropdown-menu">
                     <label class="dropdown-item">{{user.name}}</label>
+                    {% if user.is_staff %}
+                    <a class="dropdown-item" href="/admin/">
+                        <i class="fas fa-user-edit fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Go To Dashboard
+                    </a>
+                    {% endif %}
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{% url 'auth:profiledit' user.id%}">
                         <i class="fas fa-user-edit fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -58,7 +64,7 @@
                 </div>
                 {% else %}
                 <a href="{% url 'auth:login' %}">
-                    <button class="btn bg-transparent btn-round" style="border:thick; color: grey;">Login</button>
+                    <button class="btn bg-transparent btn-round">Login</button>
                 </a>
                 {% endif %}
             </div>

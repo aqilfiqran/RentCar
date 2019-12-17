@@ -31,7 +31,7 @@ Car | List
         {% for car in object_list %}
         <div class="col-lg-4 col-md pb-3">
             <div class="card" style="width: 18rem;">
-                <img src="{{car.gambar.url }}" class="card-img-top" alt="...">
+                <img src="{{car.gambar.url }}" height="288px" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{car.title}}</h5>
                     <li class="card-text" style="list-style:none;">
@@ -52,28 +52,30 @@ Car | List
         {% if page_obj.has_previous %}
         {% if pk %}
         <li style="list-style:none;" class="page-item"><a class="page-link"
-                href="{% url 'car:list' pk page_obj.previous_page_number%}">back</a>
+                href="{% url 'car:list' pk page_obj.previous_page_number%}">Previous</a>
         </li>
         {% else %}
         <li style="list-style:none;" class="page-item"><a class="page-link"
-                href="{% url 'car:list' 'all' page_obj.previous_page_number%}">back</a></li>
+                href="{% url 'car:list' 'all' page_obj.previous_page_number%}">Previous</a></li>
         {% endif %}
         {% endif %}
         {% for i in paginator.page_range %}
         {% if pk %}
-        <li style="list-style:none;" class="page-item"><a class="page-link" href="{% url 'car:list' pk i%}">back</a>
+        <li style="list-style:none;" class="page-item"><a class="page-link" href="{% url 'car:list' pk i%}">{{i}}</a>
         </li>
         {% else %}
         <li style="list-style:none;" class="page-item"><a class="page-link"
                 href="{% url 'car:list' 'all' i %}">{{i}}</a>
         </li>
         {% endif %}
-        {% endfor %} {% if page_obj.has_next %} {% if pk %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        {% if pk  %}
         <li style="list-style:none;" class="page-item"><a class="page-link"
-                href="{% url 'car:list' pk page_obj.next_page_number%}">back</a></li>
+                href="{% url 'car:list' pk page_obj.next_page_number%}">Next</a></li>
         {% else %}
         <li style="list-style:none;" class="page-item"><a class="page-link"
-                href="{% url 'car:list' 'all' page_obj.next_page_number%}">next</a>
+                href="{% url 'car:list' 'all' page_obj.next_page_number%}">Next</a>
         </li>
         {% endif %}
         {% endif %}

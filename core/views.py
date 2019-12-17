@@ -25,18 +25,19 @@ class UserFormView(View):
     template_name = 'auth/registration.html'
     context = {
         'page': 'register',
-        'icon': {
-            '<label for="id_email">Email address:</label>': 'far fa-envelope',
-            '<label for="id_name">Name:</label>': 'far fa-envelope',
-            '<label for="id_no_hp">No HP:</label>': 'far fa-envelope',
-            '<label for="id_password">Password:</label>': 'far fa-envelope',
-            '<label for="id_stnk">Stnk:</label>': 'far fa-envelope',
-        }
     }
 
     def get(self, request):
         form = self.form_class(None)
-        self.context['form'] = form
+        icon = [
+            'far fa-envelope',
+            'far fa-user',
+            'fas fa-mobile-alt',
+            'far fa-envelope',
+            'fas fa-key',
+        ]
+        formicon = zip(icon, form)
+        self.context['form'] = formicon
         return render(request, self.template_name, self.context)
 
     def post(self, request):

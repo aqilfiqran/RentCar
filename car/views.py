@@ -1,18 +1,22 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import DeleteView, DetailView, ListView, CreateView, UpdateView
+from django.views.generic import View, TemplateView, DeleteView, DetailView, ListView, CreateView, UpdateView
 from .forms import CarForm, PenyewaanForm
 from .models import Car, Penyewaan
 from django.urls import reverse_lazy
 
-
-def index(request):
-    context = {
+class Index(View):
+    extra_context = {
         'page': 'Car | Home',
         'judul': 'RentCar',
         'penjelasan': 'ini penjelasan'
     }
-    return render(request, 'car/index.html', context)
+
+    def get(self, request):
+        return render(request, 'car/index.html', self.extra_context)
+
+    def post(self, request):
+        return redirect('car:list', pk=request.POST['keyword'], page=1)
 
 
 class SewaCreateView(LoginRequiredMixin, CreateView):
@@ -44,13 +48,20 @@ class CarListView(ListView):
     }
 
     def get_context_data(self, **kwargs):
+        self.extra_context['pk'] = self.kwargs['pk']
         kwargs.update(self.extra_context)
         return super().get_context_data(**kwargs)
 
     def get_queryset(self):
-        if self.kwargs['pk'] != 'all':
+        if self.kwargs['pk'].isdigit():
             self.queryset = self.model.objects.filter(
                 user=int(self.kwargs['pk']))
+            self.kwargs.update({
+                'pk': self.kwargs['pk']
+            })
+        elif self.kwargs['pk'] != 'all':
+            self.queryset = self.model.objects.filter(
+                tipe__iexact=self.kwargs['pk'])
             self.kwargs.update({
                 'pk': self.kwargs['pk']
             })

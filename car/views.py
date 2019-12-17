@@ -89,11 +89,20 @@ class SewaListView(ListView):
     model = Penyewaan
     paginate_by = 20
     ordering = ['tgl_sewa']
+    extra_context = {
+        'page': 'Car | List',
+        'judul': 'RentCar',
+        'penjelasan': 'Car Rental for All Your Traveling Needs'
+    }
 
     def get_queryset(self):
         self.queryset = self.model.objects.filter(
             user=self.request.user)
         return super().get_queryset()
+
+    def get_context_data(self, **kwargs):
+        kwargs.update(self.extra_context)
+        return super().get_context_data(**kwargs)
 
 
 class CarDeleteView(LoginRequiredMixin, View):
@@ -107,7 +116,9 @@ class CarUpdateView(LoginRequiredMixin, UpdateView):
     model = Car
     template_name = 'car/create.html'
     extra_context = {
-        'page': 'Car | Update'
+        'page': 'Car | Update',
+        'judul': 'RentCar',
+        'penjelasan': 'Car Rental for All Your Traveling Needs'
     }
 
     def get_context_data(self, **kwargs):
@@ -119,7 +130,9 @@ class CarCreateView(LoginRequiredMixin, CreateView):
     form_class = CarForm
     template_name = 'car/create.html'
     extra_context = {
-        'page': 'Car | Create'
+        'page': 'Car | Create',
+        'judul': 'RentCar',
+        'penjelasan': 'Car Rental for All Your Traveling Needs'
     }
 
     def get_context_data(self, **kwargs):
@@ -134,7 +147,9 @@ class CarCreateView(LoginRequiredMixin, CreateView):
 class CarDetailView(DetailView):
     model = Car
     extra_context = {
-        'page': 'Car | Detail'
+        'page': 'Car | Detail',
+        'judul': 'RentCar',
+        'penjelasan': 'Car Rental for All Your Traveling Needs'
     }
 
     def get_context_data(self, **kwargs):

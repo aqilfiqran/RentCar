@@ -5,23 +5,49 @@
 Sewa | List
 {% endblock title %}
 
+{% block header %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+            <div class="brand text-center">
+                <h1>{{judul}}</h1>
+                <h3 class="title text-center">{{penjelasan}}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock header %}
+
 {% block content %}
-{% for sewa in object_list %}
-    <h1>{{sewa.car.title}}</h1>
-    <img src="{{sewa.car.gambar.url}}" width='100px' height='100px' alt="">
-    <h1>{{sewa.tgl_sewa}}</h1>
-    <h1>{{sewa.tgl_selesai}}</h1>
-    <br>
-    {% if is_paginated %}
-        {% if page_obj.has_previous %}
-            <a href="{% url 'car:sewalist' page_obj.previous_page_number%}">back</a>
-        {% endif %}
-        {% for i in paginator.page_range %}
-            <a href="{% url 'car:sewalist' i%}">{{i}}</a>
-        {% endfor %}
-        {% if page_obj.has_next %}
-            <a href="{% url 'car:sewalist' page_obj.next_page_number%}">next</a>
-        {% endif %}
-    {% endif %}
-{% endfor %}
+<div class="container">
+    <div class="row justify-content-center">
+        <h3>List Sewa</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md">
+            <div class="card text-center">
+                <div class="card-body">
+                    {% for sewa in object_list %}
+                    <h1>{{sewa.car.title}}</h1>
+                    <img src="{{sewa.car.gambar.url}}" width='100px' height='100px' alt="">
+                    <h1>{{sewa.tgl_sewa}}</h1>
+                    <h1>{{sewa.tgl_selesai}}</h1>
+                    <br>
+                    {% if is_paginated %}
+                    {% if page_obj.has_previous %}
+                    <a href="{% url 'car:sewalist' page_obj.previous_page_number%}">back</a>
+                    {% endif %}
+                    {% for i in paginator.page_range %}
+                    <a href="{% url 'car:sewalist' i%}">{{i}}</a>
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                    <a href="{% url 'car:sewalist' page_obj.next_page_number%}">next</a>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

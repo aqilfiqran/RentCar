@@ -7,14 +7,14 @@ class PenyewaanForm(forms.ModelForm):
         model = Penyewaan
         fields = ['tgl_sewa', 'tgl_selesai']
         widgets = {
-            'tgl_sewa': forms.DateInput(
+            'tgl_sewa': forms.DateTimeInput(
                 attrs={
-                    'class': 'form-control'
+                    'class': 'form-control datetimepicker'
                 }
             ),
-            'tgl_selesai': forms.DateInput(
+            'tgl_selesai': forms.DateTimeInput(
                 attrs={
-                    'class': 'form-control'
+                    'class': 'form-control datetimepicker'
                 }
             ),
         }

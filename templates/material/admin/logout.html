@@ -2,12 +2,12 @@
 {% load i18n static %}
 
 {% block extrastyle %}
-  {{ block.super }}
-  {% block theme %}
-    {% include 'material/admin/includes/admin-out-themes.html' %}
-  {% endblock %}
-  <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/layout.min.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/logout.min.css' %}">
+{{ block.super }}
+{% block theme %}
+{% include 'material/admin/includes/admin-out-themes.html' %}
+{% endblock %}
+<link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/layout.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/logout.min.css' %}">
 {% endblock %}
 
 {% block branding %}{% endblock %}
@@ -26,8 +26,11 @@
     <h2>{% trans "Logged out" %}</h2>
     <p>{% trans "Thanks for spending some quality time with the Web site today." %}</p>
     <p><a class="btn waves-effect white-text waves-light" href="{% url 'admin:index' %}">{% trans 'Log in again' %}
-      <i class="material-icons right">send</i>
-    </a></p>
+        <i class="material-icons right">send</i>
+      </a></p>
+    <p><a class="btn waves-effect white-text waves-light" href="{% url 'car:index' %}">{% trans 'Go to site' %}
+        <i class="material-icons right">send</i>
+      </a></p>
   </div>
 </div>
 

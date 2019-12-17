@@ -51,8 +51,8 @@ class Pengecekan(models.Model):
 class Penyewaan(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     car = models.ForeignKey(Car, on_delete=models.CASCADE, default=1)
-    tgl_sewa = models.DateField(verbose_name='Start Date')
-    tgl_selesai = models.DateField(verbose_name='Finish Date')
+    tgl_sewa = models.DateTimeField(verbose_name='Start Date')
+    tgl_selesai = models.DateTimeField(verbose_name='Finish Date')
 
     def get_absolute_url(self):
         return reverse("car:list", args=['all', 1])

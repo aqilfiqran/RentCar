@@ -19,18 +19,10 @@
                     <p class="description text-center pt-2">Create Account</p>
                     <div class="card-body">
                         {% for icon,forms  in form %}
-                        {% if forloop.counter is 4 %}
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="{{icon}}"></i>
-                                </span>
-                            </div>
-                            <div class="form-group form-file-upload form-file-simple">
-                                <input type="text" class="form-control inputFileVisible"
-                                    placeholder="Simple chooser...">
-                                {{forms}}
-                            </div>
+                        {% if forloop.counter is 5 %}
+                        <div class="custom-file ml-5" style="width:90%;">
+                            {{forms}}
+                            <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
                         {% else %}
                         <div class="input-group">
@@ -45,7 +37,7 @@
 
                         {% endfor %}
                     </div>
-                    <div class="footer text-center">
+                    <div class="footer text-center mt-5">
                         <button type="submit" name="register" class="btn btn-warning">Register</button>
                     </div>
                     <!-- menghubungkan ke halaman login -->

@@ -3,21 +3,16 @@ from django import forms
 
 
 class PenyewaanForm(forms.ModelForm):
+    tgl_sewa = forms.DateField(input_formats=['%d/%m/%Y %H:%M'], widget=forms.DateTimeInput(attrs={
+        'class': 'form-control datetimepicker',
+    }))
+    tgl_selesai = forms.DateField(input_formats=['%d/%m/%Y %H:%M'], widget=forms.DateTimeInput(attrs={
+        'class': 'form-control datetimepicker',
+    }))
+
     class Meta:
         model = Penyewaan
         fields = ['tgl_sewa', 'tgl_selesai']
-        widgets = {
-            'tgl_sewa': forms.DateTimeInput(
-                attrs={
-                    'class': 'form-control datetimepicker'
-                }
-            ),
-            'tgl_selesai': forms.DateTimeInput(
-                attrs={
-                    'class': 'form-control datetimepicker'
-                }
-            ),
-        }
 
 
 class CarForm(forms.ModelForm):

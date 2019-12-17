@@ -8,7 +8,7 @@ urlpatterns = [
     path('<str:pk>/<int:page>/', CarListView.as_view(), name='list'),
     path('create/', CarCreateView.as_view(), name='create'),
     path('sewa/<int:pk>', SewaCreateView.as_view(), name='sewa'),
-    path('sewa/list/<int:page>',
+    path('sewa/list/<int:pk>/<int:page>/',
          SewaListView.as_view(), name='sewalist'),
     path('update/<int:pk>', CarUpdateView.as_view(), name='update'),
     path('delete/<int:pk>', CarDeleteView.as_view(), name='delete'),

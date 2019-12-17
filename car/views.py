@@ -6,17 +6,6 @@ from .models import Car, Penyewaan
 from django.urls import reverse_lazy
 
 
-class About(TemplateView):
-    template_name = 'car/about.html'
-    extra_context = {
-        'page': 'Rentcar | About'
-    }
-
-    def get_context_data(self, **kwargs):
-        kwargs.update(self.extra_context)
-        return super().get_context_data(**kwargs)
-
-
 class Index(View):
     extra_context = {
         'page': 'Car | Home',
@@ -153,5 +142,14 @@ class CarDetailView(DetailView):
     }
 
     def get_context_data(self, **kwargs):
+        car = Car.objects.only('id').get(slug=self.kwargs['slug'])
+        penyewa = car.penyewaan_set.all()
+        self.extra_context['sewa'] = penyewa
         kwargs.update(self.extra_context)
         return super().get_context_data(**kwargs)
+
+
+class Submit(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        penyewaan = Penyewaan.objects.only('id').get(id=pk).delete()
+        return redirect("car:list", pk=request.user.id, page=1)

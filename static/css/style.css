@@ -6,7 +6,7 @@
 }
 
 nav .btn {
-    color: #555;
+    color: rgb(168, 168, 168);
     box-shadow: none;
     transition: .7s;
     font-size: 16px;
@@ -36,7 +36,7 @@ nav .btn:hover {
 }
 
 .navbar.navbar-transparent {
-    color: #555;
+    color: rgb(168, 168, 168);
 }
 
 .dropdown-menu {

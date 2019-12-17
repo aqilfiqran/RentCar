@@ -30,14 +30,17 @@
         {% endblock content %}
     </div>
 
-    <footer class="footer">
+    <footer class="footer" style="background: url({% static 'img/footer.svg' %});    background-color: rgba(17, 15, 15,1) !important;
+        background-position-y: 400px;
+        background-size: cover;
+    ">
         <div class="container p-0">
             <div class="row">
                 <div class="col-lg-6 col-md">
-                    <h1 class="title">RentCar</h1>
+                    <h1 class="title text-white">RentCar</h1>
                 </div>
                 <div class="col-lg-6 col-md">
-                    <h3 class="title">Follow Us:</h3>
+                    <h3 class="title text-white">Follow Us:</h3>
                     <div class="btn-wrapper profile">
                         <a target="_blank" href="" class="btn btn-icon btn-neutral btn-round btn-simple"
                             data-toggle="tooltip" data-original-title="Follow us">

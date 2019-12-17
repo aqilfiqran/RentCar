@@ -21,7 +21,7 @@ class Index(View):
     extra_context = {
         'page': 'Car | Home',
         'judul': 'RentCar',
-        'penjelasan': 'ini penjelasan'
+        'penjelasan': 'Car Rental for All Your Traveling Needs'
     }
 
     def get(self, request):

@@ -38,12 +38,17 @@ Car | Detail
                 <p style="font-family: montserrat;">{{object.deskripsi}}</p>
             </div>
             <div class="row justify-content-end mr-4 pb-3">
-                <button class="btn btn-warning">
-                    <a href="{% url 'car:sewa' car.id %}">
-                        Sewa
-                    </a>
-                </button>
+                <a class="btn btn-warning" href="{% url 'car:sewa' car.id %}">
+                    Sewa
+                </a>
             </div>
+            {% if sewa %}
+            {% for sewas in sewa %}
+            {{sewas.user.name}}
+            {{sewas.user.no_hp}}
+            <a href="{% url 'car:submit' sewas.id %}">konfirmasi</a>
+            {% endfor %}
+            {% endif %}
         </div>
     </div>
 </div>

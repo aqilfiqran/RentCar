@@ -8,8 +8,8 @@ Car | Detail
     <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
             <div class="brand text-center">
-                <h1>{{judul}}</h1>
-                <h3 class="title text-center">{{penjelasan}}</h3>
+                <h1 style="font-family:montserrat; font-size:60px; font-weight: 900;">{{judul}}</h1>
+                <h3 class="title text-center m-0"><i>{{penjelasan}}</i></h3>
             </div>
         </div>
     </div>
@@ -23,16 +23,26 @@ Car | Detail
     <div class="col-lg-8 col-md">
         <div class="container">
             <div class="row">
-                <h1>{{object.title}}</h1>
+                <h2 style="font-family: montserrat;font-weight: 800; text-transform: uppercase;">{{object.title}}</h2>
             </div>
             <div class="row">
-                <h1>{{object.harga_sewa_hari}}</h1>
+                <h3 style="font-family: montserrat;">Harga Sewa/hari = Rp. {{object.harga_sewa_hari}}</h3>
             </div>
             <div class="row">
-                <h1>{{object.lokasi}}</h1>
+                <h3 style="font-family: montserrat;">Lokasi = {{object.lokasi}}</h3>
             </div>
             <div class="row">
-                <p>{{object.deskripsi}}</p>
+                <h5 style="font-family: montserrat;">Deskripsi : </h5>
+            </div>
+            <div class="row">
+                <p style="font-family: montserrat;">{{object.deskripsi}}</p>
+            </div>
+            <div class="row justify-content-end mr-4 pb-3">
+                <button class="btn btn-warning">
+                    <a href="{% url 'car:sewa' car.id %}">
+                        Sewa
+                    </a>
+                </button>
             </div>
         </div>
     </div>

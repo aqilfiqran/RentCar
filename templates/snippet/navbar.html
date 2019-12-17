@@ -21,10 +21,10 @@
                     <a href="{% url 'car:list' 'all' 1%}" class="nav-link">Sewa</a>
                 </li>
             </ul>
-            <form class="form-inline ml-auto nav-item navbar-nav" action="" method="post">
+            <form class="form-inline ml-auto nav-item navbar-nav" action="{% url 'car:index' %}" method="post">
+                {% csrf_token %}
                 <div class="form-group no-border pr-4">
-                    <input type="text" class="form-control place" name="keyword" placeholder="Search"
-                        style="color: grey;">
+                    <input type="text" class="form-control place" name="keyword" placeholder="Search">
                 </div>
             </form>
             <div class="btn-group nav-item navbar-nav">

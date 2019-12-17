@@ -6,7 +6,7 @@
 }
 
 nav .btn {
-    color: #555;
+    color: rgb(168, 168, 168);
     box-shadow: none;
     transition: .7s;
     font-size: 16px;
@@ -22,7 +22,7 @@ nav .btn:hover {
 .form-control,
 .is-focused .form-control {
     background-image: linear-gradient(to top, rgb(66, 63, 63) 2px, rgba(156, 39, 176, 0) 2px),
-        linear-gradient(to top, rgb(17, 15, 15) 1px, rgba(210, 210, 210, 0) 1px);
+        linear-gradient(to top, rgb(114, 102, 102) 1px, rgba(210, 210, 210, 0) 1px);
 }
 
 .nav-link:hover,
@@ -36,10 +36,12 @@ nav .btn:hover {
 }
 
 .navbar.navbar-transparent {
-    color: #555;
+    color: rgb(168, 168, 168);
 }
 
 .dropdown-menu {
+    top: 100%;
+    left: -150%;
     background-color: rgb(17, 16, 16);
 }
 
@@ -50,6 +52,15 @@ nav .btn:hover {
 .dropdown-menu a:active {
     background-color: rgb(61, 55, 55);
     box-shadow: none;
+}
+
+.modal-dialog .modal-header {
+    background-color: rgb(17, 15, 15) !important;
+    color: rgb(104, 102, 102);
+    padding: 20px;
+    box-sizing: border-box;
+    font-weight: 700;
+
 }
 
 .dropdown-menu .dropdown-item,
@@ -143,7 +154,7 @@ nav .btn:hover {
 }
 
 a {
-    color: rgb(199, 199, 199);
+    color: rgb(36, 36, 36);
 }
 
 a:hover {
@@ -172,8 +183,116 @@ a:hover {
 footer {
     box-sizing: border-box;
     position: relative;
-    background-color: rgb(17, 15, 15) !important;
+
+    height: 300px;
     box-shadow: 0px 0px 10px black,
         0px 0px 15px black,
         0px 0px 20px black inset;
+    /* background-color: transparent !important;
+    background-position-y: 100px;
+    background-size: cover; */
+}
+
+.custom-file-input.is-valid~.custom-file-label,
+.was-validated .custom-file-input:valid~.custom-file-label {
+    border-color: #28a745
+}
+
+.custom-file-input.is-valid~.custom-file-label::before,
+.was-validated .custom-file-input:valid~.custom-file-label::before {
+    border-color: inherit
+}
+
+.custom-file-input.is-valid~.valid-feedback,
+.custom-file-input.is-valid~.valid-tooltip,
+.was-validated .custom-file-input:valid~.valid-feedback,
+.was-validated .custom-file-input:valid~.valid-tooltip {
+    display: block
+}
+
+.custom-file-input.is-valid:focus~.custom-file-label,
+.was-validated .custom-file-input:valid:focus~.custom-file-label {
+    box-shadow: 0 0 0 .2rem rgba(40, 167, 69, .25)
+}
+
+.input-group>.custom-file:focus {
+    z-index: 3
+}
+
+.custom-file {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    margin-bottom: 0
+}
+
+.custom-file-input {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    margin: 0;
+    opacity: 0;
+}
+
+input[type="file"i] {
+    -webkit-appearance: initial;
+    background-color: initial;
+    cursor: default;
+    align-items: baseline;
+    color: inherit;
+    text-align: start !important;
+    padding: initial;
+    border: initial;
+}
+
+.custom-file-input {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    margin: 0;
+    opacity: 0
+}
+
+.custom-file-input:focus~.custom-file-control {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
+}
+
+.custom-file-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: transparent;
+    border-bottom: 1px solid rgb(102, 86, 88);
+    border-radius: .25rem
+}
+
+.custom-file-label::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    display: block;
+    height: calc(calc(2.25rem + 2px) - 1px * 2);
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    color: #a1a1a1;
+    content: "Browse";
+    background-color: rgb(102, 86, 88);
+    border-left: 1px solid rgb(102, 86, 88);
+    border-radius: 0 .25rem .25rem 0
+}
+
+.card-login .form {
+    min-height: 320px;
 }

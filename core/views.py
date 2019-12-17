@@ -33,8 +33,8 @@ class UserFormView(View):
             'far fa-envelope',
             'far fa-user',
             'fas fa-mobile-alt',
-            'far fa-envelope',
             'fas fa-key',
+            'far fa-envelope',
         ]
         formicon = zip(icon, form)
         self.context['form'] = formicon
@@ -68,7 +68,7 @@ class LoginView(View):
             login(request, user)
             return redirect('car:index')
         else:
-            return redirect('auth:login')
+            return render(request, self.template_name, {'page': 'login', 'valid': 'Email/Password is Incorrect'})
 
 
 def LogoutView(request):

@@ -21,7 +21,7 @@ class Index(View):
     extra_context = {
         'page': 'Car | Home',
         'judul': 'RentCar',
-        'penjelasan': 'ini penjelasan'
+        'penjelasan': 'Car Rental for All Your Traveling Needs'
     }
 
     def get(self, request):
@@ -60,6 +60,11 @@ class CarListView(ListView):
     }
 
     def get_context_data(self, **kwargs):
+        if(self.kwargs['pk'].isdigit()):
+            self.extra_context['digit'] = 'digit'
+        else:
+            self.extra_context['digit'] = None
+
         self.extra_context['pk'] = self.kwargs['pk']
         kwargs.update(self.extra_context)
         return super().get_context_data(**kwargs)
@@ -91,9 +96,10 @@ class SewaListView(ListView):
         return super().get_queryset()
 
 
-class CarDeleteView(LoginRequiredMixin, DeleteView):
-    model = Car
-    success_url = reverse_lazy("car:list", args={1})
+class CarDeleteView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        car = Car.objects.only('id').get(id=pk).delete()
+        return redirect("car:list", pk=request.user.id, page=1)
 
 
 class CarUpdateView(LoginRequiredMixin, UpdateView):

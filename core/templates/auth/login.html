@@ -15,7 +15,9 @@
                     <div class="card-header card-header-warning text-center">
                         <h4 class="card-title">Login</h4>
                     </div>
-                    <p class="description text-center pt-4">MyAccount</p>
+                    {% if valid %}
+                    <div class="alert alert-danger text-center" style="width=100%;">{{valid}}</div>
+                    {% endif %}
                     <div class="card-body pt-2">
                         <div class="input-group">
                             <div class="input-group-prepend">

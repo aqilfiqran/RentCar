@@ -19,7 +19,7 @@
 
     <!-- textarea -->
     <div class="page-header header-filter" data-parallax='true'
-        style="background-image: url('{% static 'img/mobil.jpg' %}');background-size: cover;">
+        style="background-image: url('{% static 'img/mobils.jpg' %}');background-size: cover;">
         {% block header %}
         {% endblock header %}
     </div>
@@ -30,23 +30,17 @@
         {% endblock content %}
     </div>
 
-    <footer class="footer">
-        <div class="container">
+    <footer class="footer" style="background: url({% static 'img/footer.svg' %});    background-color: rgba(17, 15, 15,1) !important;
+        background-position-y: 400px;
+        background-size: cover;
+    ">
+        <div class="container p-0">
             <div class="row">
-                <div class="col-md-4">
-                    <h1 class="title">RentCar</h1>
+                <div class="col-lg-6 col-md">
+                    <h1 class="title text-white">RentCar</h1>
                 </div>
-                <div class="col-md-4 pt-5 pl-5">
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <a href="{% url 'car:about' %}" class="nav-link">
-                                About Me
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h3 class="title">Follow Us:</h3>
+                <div class="col-lg-6 col-md">
+                    <h3 class="title text-white">Follow Us:</h3>
                     <div class="btn-wrapper profile">
                         <a target="_blank" href="" class="btn btn-icon btn-neutral btn-round btn-simple"
                             data-toggle="tooltip" data-original-title="Follow us">

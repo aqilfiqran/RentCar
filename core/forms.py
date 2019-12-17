@@ -7,7 +7,7 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['email', 'name', 'no_hp', 'stnk', 'password']
+        fields = ['email', 'name', 'no_hp', 'password', 'stnk']
         widgets = {
             'email': forms.TextInput(
                 attrs={
@@ -35,7 +35,8 @@ class UserForm(forms.ModelForm):
             ),
             'stnk': forms.FileInput(
                 attrs={
-                    'class': 'inputFileHidden',
+                    'class': 'custom-file-input',
+                    'id': "customFile"
                 }
             ),
         }

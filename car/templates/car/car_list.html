@@ -41,7 +41,34 @@ Car | List
                         Harga Sewa : {{car.harga_sewa_hari}}
                     </li>
                     <a href=" {% url 'car:detail' car.slug %}" class="btn btn-warning">Read More</a>
+                    {% if digit %}
+                    <a href="{% url 'car:update' car.id %}" class="btn btn-warning">Edit </a>
+                    <a href="" data-toggle="modal" data-target="#exampleModal-{{car.id}}" class="btn btn-warning">Delete
+                    </a>
+                    {% else %}
                     <a href="{% url 'car:sewa' car.id %}" class="btn btn-warning">sewa </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal-{{car.id}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">DELETE</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure want to delete {{car.title}}?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="{% url 'car:delete' car.id %}" class="btn btn-warning">Save changes</a>
+                    </div>
                 </div>
             </div>
         </div>
